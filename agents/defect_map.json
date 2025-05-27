@@ -1,0 +1,67 @@
+{
+  "off_by_one_error": {
+    "problem": "Loop iterates one time too few due to off-by-one in range",
+    "buggy_code": "def sum_list(nums):\n    total = 0\n    for i in range(len(nums)-1):\n        total += nums[i]\n    return total",
+    "fixed_code": "def sum_list(nums):\n    total = 0\n    for i in range(len(nums)):\n        total += nums[i]\n    return total"
+  },
+  "wrong_loop_condition": {
+  "problem": "Loop condition uses wrong boundary causing incorrect iteration count",
+  "buggy_code": "def print_first_n(nums, n):\n i = 0\n # wrong: stops one element early\n while i < n-1:\n print(nums[i])\n i += 1",
+  "fixed_code": "def print_first_n(nums, n):\n i = 0\n # correct: iterates exactly n times\n while i < n:\n print(nums[i])\n i += 1"
+  },
+  "uninitialized_variable": {
+    "problem": "Variable used before assignment causes NameError or unexpected behavior",
+    "buggy_code": "def compute():\n    if True:\n        result = 10\n    return result + 5",
+    "fixed_code": "def compute():\n    result = 0\n    if True:\n        result = 10\n    return result + 5"
+  },
+  "null_reference_error": {
+    "problem": "Dereferencing a None object causing AttributeError",
+    "buggy_code": "def uppercase(s):\n    return s.upper()\n\nprint(uppercase(None))",
+    "fixed_code": "def uppercase(s):\n    if s is None:\n        return ''\n    return s.upper()\n\nprint(uppercase(None))"
+  },
+  "missing_return_statement": {
+    "problem": "Function does not return a value in all control paths, returning None unexpectedly",
+    "buggy_code": "def find_even(nums):\n    for n in nums:\n        if n % 2 == 0:\n            return n\n    # no return if no even",
+    "fixed_code": "def find_even(nums):\n    for n in nums:\n        if n % 2 == 0:\n            return n\n    return None"
+  },
+  "infinite_loop": {
+    "problem": "Loop condition never becomes false, causing an infinite loop",
+    "buggy_code": "def countdown(n):\n    while n > 0:\n        print(n)\n        # missing n decrement",
+    "fixed_code": "def countdown(n):\n    while n > 0:\n        print(n)\n        n -= 1"
+  },
+  "incorrect_indentation": {
+    "problem": "Improper indentation changes execution flow",
+    "buggy_code": "def greet(name):\n    if name:\n    print('Hello ' + name)",
+    "fixed_code": "def greet(name):\n    if name:\n        print('Hello ' + name)"
+  },
+  "resource_leak": {
+    "problem": "File opened but not closed, leading to resource leak",
+    "buggy_code": "def read_file(path):\n    f = open(path, 'r')\n    data = f.read()\n    return data",
+    "fixed_code": "def read_file(path):\n    with open(path, 'r') as f:\n        data = f.read()\n    return data"
+  },
+  "wrong_operator_precedence": {
+    "problem": "Missing parentheses causes incorrect calculation due to operator precedence",
+    "buggy_code": "def calculate(a, b, c):\n    return a + b * c",
+    "fixed_code": "def calculate(a, b, c):\n    return (a + b) * c"
+  },
+  "type_mismatch": {
+    "problem": "Concatenating string and integer without conversion causes TypeError",
+    "buggy_code": "def report_count(count):\n    return 'Count: ' + count",
+    "fixed_code": "def report_count(count):\n    return 'Count: ' + str(count)"
+  },
+  "missing_exception_handling": {
+    "problem": "Potential error not handled, causing program crash",
+    "buggy_code": "def parse_int(s):\n    return int(s)\n\nprint(parse_int('abc'))",
+    "fixed_code": "def parse_int(s):\n    try:\n        return int(s)\n    except ValueError:\n        return None\n\nprint(parse_int('abc'))"
+  },
+  "division_by_zero_error": {
+    "problem": "Dividing by zero causes ZeroDivisionError",
+    "buggy_code": "def invert(x):\n    return 1 / x",
+    "fixed_code": "def invert(x):\n    if x == 0:\n        return None\n    return 1 / x"
+  },
+  "index_out_of_range": {
+    "problem": "Accessing list with invalid index causes IndexError",
+    "buggy_code": "def get_last(nums):\n    return nums[len(nums)]",
+    "fixed_code": "def get_last(nums):\n    return nums[-1]"
+  }
+}

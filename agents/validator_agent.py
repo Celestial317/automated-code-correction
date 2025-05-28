@@ -2,6 +2,8 @@ import os
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_community.tools.riza.command import ExecPython
+from langchain.agents import AgentExecutor
+from langchain_core.tools import tool
 from pathlib import Path
 
 os.environ["RIZA_API_KEY"] = ""
@@ -65,3 +67,21 @@ def validate_code(llm, fixed_code_path, test_code_path):
         feedback = "Response format not recognized."
 
     return passed, feedback
+
+
+tool_validate_code = tool.from_function(
+    func=validate_code,
+    name="validate_code",
+    description="Validate the fixed code against the test code. Returns True if all tests pass, False otherwise.",
+    return_direct=True,
+)
+
+def create_agent_executor(llm):
+    agent_executor = AgentExecutor(
+        llm=llm,
+        tools=[tool_validate_code],
+        verbose=True,
+        max_iterations=1,
+        return_intermediate_steps=True,
+    )
+    return agent_executor

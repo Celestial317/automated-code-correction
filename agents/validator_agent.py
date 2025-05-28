@@ -10,7 +10,6 @@ prompt_template = PromptTemplate(
     input_variables=["fixed_code", "test_code"],
     template="""
 You are a Python code validator.
-
 Given the fixed code below:
 
 {fixed_code}
@@ -20,18 +19,14 @@ and the test code below:
 {test_code}
 
 Evaluate if the fixed code passes all the tests.
-
 Respond exactly in one of the following formats:
-
 If all tests pass, respond with:
 PASS
 
 If any test fails, respond with:
 FAIL
 <error message or failed test description>
-
 Provide a brief explanation of the failure or success after the keyword.
-
 Do not add any other text outside the specified format.
 """
 )

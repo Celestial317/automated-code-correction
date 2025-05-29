@@ -1,13 +1,50 @@
+import subprocess
+import json
+from pathlib import Path
 from langchain.agents import initialize_agent
 from langchain.agents.agent_types import AgentType
 from langchain_core.language_models import BaseLanguageModel
-from langchain_experimental.tools import PythonREPLTool
-from pathlib import Path
+from langchain_core.tools import Tool
 
-validate_code_tool = PythonREPLTool(
-    name="validate_code",
-    description="Tool to run internal Python tests using Python REPL. Used to validate fixed Python code against test scripts.",
+
+def subprocess_run_code(input_str: str) -> str:
+    try:
+        data = json.loads(input_str)
+        fixed_code_path = data.get("fixed_code_path")
+
+        if not fixed_code_path:
+            return "Error: fixed_code_path is required."
+
+        fixed_path = Path(fixed_code_path).resolve()
+
+        if not fixed_path.exists():
+            return f"Error: File does not exist at {fixed_path}"
+
+        result = subprocess.run(
+            ["python", str(fixed_path)],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+
+        output = (result.stdout.strip() + "\n" + result.stderr.strip()).strip()
+        return output
+
+    except Exception as e:
+        return f"Exception occurred: {str(e)}"
+
+
+validate_code_tool = Tool.from_function(
+    name="run_code",
+    description=(
+        '''Runs Python code file via subprocess to check validation if the output is correct or not. 
+        Input: JSON string with key 'fixed_code_path'. 
+        Output: stdout and stderr combined.'''
+    ),
+    func=subprocess_run_code,
+    return_direct=True,
 )
+
 
 def validate_code_agent(llm: BaseLanguageModel):
     agent_executor = initialize_agent(
@@ -19,32 +56,44 @@ def validate_code_agent(llm: BaseLanguageModel):
         max_iterations=10,
     )
 
-    def validate_code(fixed_code_path: str, test_code_path: str = None):
+    def validate_code(fixed_code_path: str):
         attempt_count = 1
         try:
-            query = (
-                "import sys\n"
-                "sys.path.append('code_db/testing_code')\n"
-                "import pytest\n"
-                "pytest.use_correct = lambda *args, **kwargs: None\n"
-                f"exec(open('{fixed_code_path}').read())\n"
-                f"exec(open('{test_code_path}').read())"
+            input_json = json.dumps({
+                "fixed_code_path": fixed_code_path,
+            })
+
+            output = agent_executor.run(input_json)
+            log_entry = (
+                f"{'-'*60}\n"
+                f"Validation Attempt: {attempt_count}\n"
+                f"Fixed Code Path: {fixed_code_path}\n"
+                f"Agent Output:\n{'Correct Code! hehe' if not output.strip() else output.strip()}\n"
+                f"{'-'*60}\n"
             )
+            with open("log.txt", "a") as log_file:
+                log_file.write(log_entry)
 
-            result = agent_executor.run(query)
-
-            if "Traceback" not in result and "error" not in result.lower() and "fail" not in result.lower():
-                with open("log.txt", "a") as log_file:
-                    log_file.write(f"Validation succeeded after {attempt_count} attempt(s).\n")
-                return True, ""
+            lowered = output.lower()
+            if ("traceback" not in lowered
+                and "error" not in lowered
+                and "fail" not in lowered
+                and "exception" not in lowered):
+                return True, "Code ran successfully."
             else:
-                with open("log.txt", "a") as log_file:
-                    log_file.write(f"Validation failed after {attempt_count} attempt(s). Output: {result}\n")
-                return False, result.strip()
+                return False, output.strip()
 
         except Exception as e:
+            error_log = (
+                f"{'!'*60}\n"
+                f"Exception During Validation\n"
+                f"Attempt: {attempt_count}\n"
+                f"Fixed Code Path: {fixed_code_path}\n"
+                f"Error: {str(e)}\n"
+                f"{'!'*60}\n"
+            )
             with open("log.txt", "a") as log_file:
-                log_file.write(f"Agent validation crashed after {attempt_count} attempt(s): {str(e)}\n")
+                log_file.write(error_log)
             return False, f"Agent validation crashed: {str(e)}"
 
     return validate_code

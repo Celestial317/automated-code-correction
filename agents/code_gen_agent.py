@@ -30,8 +30,9 @@ codeline1 or whatever
 the first line of <```python> is not needed as it gives error in validation,
 just return the code as a string. NO additional comments or explanations.
 do not mention it is python code or something, do not use any backtick
-
 just USE triple quotes or double quotes to return the code.
+
+to Give comments just use # at the start of the line, do not use any backticks, backslash or triple quotes for comments.
 """
 
 prompt_template = PromptTemplate(

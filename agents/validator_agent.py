@@ -1,12 +1,48 @@
+import subprocess
+from pathlib import Path
 from langchain.agents import initialize_agent
 from langchain.agents.agent_types import AgentType
 from langchain_core.language_models import BaseLanguageModel
-from langchain_experimental.tools import PythonREPLTool
-from pathlib import Path
+from langchain_core.tools import Tool
 
-validate_code_tool = PythonREPLTool(
+def validate_code(fixed_code_path: str, test_code_path: str = None) -> str:
+    try:
+        fixed_path = Path(fixed_code_path).resolve()
+        test_path = Path(test_code_path).resolve()
+
+        temp_script_path = Path("run_validation.py")
+        with open(temp_script_path, "w") as f:
+            f.write(
+                "import sys\n"
+                "import pytest\n"
+                f"sys.path.append('{test_path.parent.as_posix()}')\n"
+                f"exec(open('{fixed_path.as_posix()}').read())\n"
+                f"exec(open('{test_path.as_posix()}').read())\n"
+            )
+
+        result = subprocess.run(
+            ["python", str(temp_script_path)],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+
+        output = result.stdout + "\n" + result.stderr
+        return output.strip()
+
+    except Exception as e:
+        return f"Exception occurred: {str(e)}"
+
+    finally:
+        if Path("run_validation.py").exists():
+            Path("run_validation.py").unlink()
+
+
+validate_code_tool = Tool.from_function(
     name="validate_code",
-    description="Tool to run internal Python tests using Python REPL. Used to validate fixed Python code against test scripts.",
+    description="Validate fixed Python code against a test script using subprocess, it executes the Code. Takes fixed_code_path and test_code_path.",
+    func=validate_code,
+    return_direct=True,
 )
 
 def validate_code_agent(llm: BaseLanguageModel):
@@ -23,14 +59,9 @@ def validate_code_agent(llm: BaseLanguageModel):
         attempt_count = 1
         try:
             query = (
-                "import sys\n"
-                "sys.path.append('code_db/testing_code')\n"
-                "import pytest\n"
-                "pytest.use_correct = lambda *args, **kwargs: None\n"
-                f"exec(open('{fixed_code_path}').read())\n"
-                f"exec(open('{test_code_path}').read())"
+                f"Validate the fixed Python code using the test file. "
+                f"fixed_code_path: {fixed_code_path}, test_code_path: {test_code_path}"
             )
-
             result = agent_executor.run(query)
 
             if "Traceback" not in result and "error" not in result.lower() and "fail" not in result.lower():

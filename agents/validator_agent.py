@@ -21,14 +21,16 @@ def validate_code_agent(llm: BaseLanguageModel):
 
     def validate_code(fixed_code_path: str, test_code_path: str = None):
         attempt_count = 1
-        file_stem = Path(fixed_code_path).stem 
-        test_code_path = f"code_db/testing_code/test_{file_stem}.py"
+        file_stem = Path(fixed_code_path).stem
+        test_code_path = f"test_{file_stem}.py"
 
         try:
             query = (
-                f"First, run the fixed code to register all functions:\n"
+                "import sys\n"
+                "sys.path.append('code_db/testing_code')\n"
+                "import pytest\n"
+                "pytest.use_correct = lambda *args, **kwargs: None\n"
                 f"exec(open('{fixed_code_path}').read())\n"
-                f"Then, run the test code to validate it:\n"
                 f"exec(open('{test_code_path}').read())"
             )
 

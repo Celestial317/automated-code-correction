@@ -1,26 +1,20 @@
-```python
 def kheapsort(arr, k):
     import heapq
 
-    # 1. Heap Initialization:
-    # Initialize the min-heap with the first k + 1 elements of the input array.
-    # Use min(len(arr), k + 1) to handle cases where len(arr) is smaller than k + 1.
-    initial_heap_size = min(len(arr), k + 1)
-    heap = list(arr[:initial_heap_size])
+    # Initialize the min-heap with the first min(len(arr), k + 1) elements.
+    # The heap will store elements that are within k distance from their sorted position.
+    initial_elements_count = min(len(arr), k + 1)
+    heap = list(arr[:initial_elements_count])
     heapq.heapify(heap)
 
-    # 2. Sliding Window Iteration:
-    # Iterate through the input array starting from index k + 1 up to the end.
-    for i in range(initial_heap_size, len(arr)):
-        # The smallest element in the current window is at the top of the heap.
-        # Extract this smallest element and yield it.
+    # Iterate through the rest of the array.
+    # For each element, yield the smallest from the heap and push the current element.
+    for i in range(initial_elements_count, len(arr)):
         yield heapq.heappop(heap)
-        # Add the current element arr[i] into the heap to maintain the sliding window.
         heapq.heappush(heap, arr[i])
 
-    # 3. Drain Remaining Heap:
-    # After the loop finishes, the heap will contain the last k (or fewer) elements
-    # that need to be yielded in sorted order.
+    # After iterating through all elements in arr,
+    # yield the remaining elements from the heap in sorted order.
     while heap:
         yield heapq.heappop(heap)
 
@@ -50,4 +44,3 @@ Example:
     >>> list(kheapsort([1, 2, 3, 4, 5], 0))
     [1, 2, 3, 4, 5]
 """
-```

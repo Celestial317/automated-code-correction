@@ -1,8 +1,8 @@
-```python
+
 def bitcount(n):
     count = 0
     while n:
-        n &= n - 1  # Corrected from n ^= n - 1
+        n &= n - 1  # Correctly clears the least significant set bit
         count += 1
     return count
 
@@ -24,4 +24,3 @@ Examples:
     >>> bitcount(128)
     1
 """
-```

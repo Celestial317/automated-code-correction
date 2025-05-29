@@ -1,4 +1,4 @@
-```python
+
 def gcd(a, b):
     if b == 0:
         return a
@@ -25,4 +25,3 @@ Example:
     7
 
 """
-```

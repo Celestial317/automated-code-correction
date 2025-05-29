@@ -1,4 +1,3 @@
-```python
 def is_valid_parenthesization(parens):
     depth = 0
     for paren in parens:
@@ -10,23 +9,3 @@ def is_valid_parenthesization(parens):
                 return False
 
     return depth == 0
-
- 
-"""
-Nested Parens
-Input:
-    parens: A string of parentheses
-
-Precondition:
-    all(paren in '()' for paren in parens)
-
-Output:
-    Whether the parentheses are properly nested
-
-Examples:
-    >>> is_valid_parenthesization('((()()))()')
-    True
-    >>> is_valid_parenthesization(')()(')
-    False
-"""
-```

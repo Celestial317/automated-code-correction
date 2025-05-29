@@ -38,7 +38,7 @@ agents/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your_username/multi-agent-code-repair.git
+git clone https://github.com/Celestial317/multi-agent-code-repair.git
 cd multi-agent-code-repair
 ````
 
@@ -53,8 +53,7 @@ Minimum required packages:
 ```
 langchain
 langchain-google-genai
-openai
-pydantic<2
+subprocess
 ```
 
 ### 3. Prepare dataset
@@ -85,14 +84,27 @@ The system will iterate through all files in `buggy_code/`, attempt to fix them,
 ## Output and Logs
 
 * Fixed code will be saved in `code_db/fixed_code/`
-* Intermediate iterations are stored in `temp_code/`
+* Intermediate iterations are stored in a Buffer named `temp_code/`
 * Validation logs, including feedback and attempt count, are saved in `log.txt`
 
 Example `log.txt` entries:
 
 ```
-Validation failed after 1 attempt(s). Feedback: AssertionError: Expected 5 but got 3
-Validation succeeded after 2 attempt(s).
+------------------------------------------------------------
+Validation Attempt: 1
+Fixed Code Path: code_db\temp_code\find_first_in_sorted.py
+Agent Output:
+File "C:\CodeVSCSummers\code_gen_check\code_db\temp_code\find_first_in_sorted.py", line 1
+    ```python
+    ^
+SyntaxError: invalid syntax
+------------------------------------------------------------
+------------------------------------------------------------
+Validation Attempt: 1
+Fixed Code Path: code_db\temp_code\find_first_in_sorted.py
+Agent Output:
+Correct Code! hehe
+------------------------------------------------------------
 ```
 
 ## Configuration

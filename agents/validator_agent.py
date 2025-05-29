@@ -1,87 +1,51 @@
-import os
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
-from langchain_community.tools.riza.command import ExecPython
-from langchain.agents import AgentExecutor
-from langchain_core.tools import tool
+from langchain.agents import initialize_agent
+from langchain.agents.agent_types import AgentType
+from langchain_core.language_models import BaseLanguageModel
+from langchain_experimental.tools import PythonREPLTool
 from pathlib import Path
 
-os.environ["RIZA_API_KEY"] = ""
-
-prompt_template = PromptTemplate(
-    input_variables=["fixed_code", "test_code"],
-    template="""
-You are a Python code validator.
-Given the fixed code below:
-
-{fixed_code}
-
-and the test code below:
-
-{test_code}
-
-Evaluate if the fixed code passes all the tests.
-Respond exactly in one of the following formats:
-If all tests pass, respond with:
-PASS
-
-If any test fails, respond with:
-FAIL
-<error message or failed test description>
-Provide a brief explanation of the failure or success after the keyword.
-Do not add any other text outside the specified format.
-"""
-)
-
-def validate_code(llm, fixed_code_path, test_code_path):
-    fixed_code = Path(fixed_code_path).read_text()
-    test_code = Path(test_code_path).read_text()
-
-    executor = ExecPython()
-    exec_code = f"""{fixed_code} {test_code}"""
-    result = executor.invoke(exec_code.strip())
-    output = result.strip()
-
-    chain = LLMChain(llm=llm, prompt=prompt_template)
-    response = chain.run(fixed_code=fixed_code, test_code=test_code).strip()
-
-    with open("agents/log.txt", "a") as log_file:
-        log_file.write("VALIDATION RESULT:\n")
-        log_file.write(f"{response}\n\n")
-        log_file.write("RAW OUTPUT:\n")
-        log_file.write(f"{output}\n\n")
-        log_file.write("=" * 80 + "\n\n")
-
-    if response.startswith("PASS"):
-        passed = True
-        feedback = ""
-    elif response.startswith("FAIL"):
-        passed = False
-        split_response = response.split("\n", 1)
-        if len(split_response) > 1:
-            feedback = split_response[1].strip()
-        else:
-            feedback = "Test failed but no explanation was provided."
-    else:
-        passed = False
-        feedback = "Response format not recognized."
-
-    return passed, feedback
-
-
-tool_validate_code = tool.from_function(
-    func=validate_code,
+validate_code_tool = PythonREPLTool(
     name="validate_code",
-    description="Validate the fixed code against the test code. Returns True if all tests pass, False otherwise.",
-    return_direct=True,
+    description="Tool to run internal Python tests using Python REPL. Used to validate fixed Python code against test scripts.",
 )
 
-def create_agent_executor(llm):
-    agent_executor = AgentExecutor(
+def validate_code_agent(llm: BaseLanguageModel):
+    agent_executor = initialize_agent(
+        tools=[validate_code_tool],
         llm=llm,
-        tools=[tool_validate_code],
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         verbose=True,
-        max_iterations=1,
-        return_intermediate_steps=True,
+        handle_parsing_errors=True,
+        max_iterations=10,
     )
-    return agent_executor
+
+    def validate_code(fixed_code_path: str, test_code_path: str = None):
+        attempt_count = 1
+        file_stem = Path(fixed_code_path).stem 
+        test_code_path = f"code_db/testing_code/test_{file_stem}.py"
+
+        try:
+            query = (
+                f"First, run the fixed code to register all functions:\n"
+                f"exec(open('{fixed_code_path}').read())\n"
+                f"Then, run the test code to validate it:\n"
+                f"exec(open('{test_code_path}').read())"
+            )
+
+            result = agent_executor.run(query)
+
+            if "Traceback" not in result and "error" not in result.lower() and "fail" not in result.lower():
+                with open("log.txt", "a") as log_file:
+                    log_file.write(f"Validation succeeded after {attempt_count} attempt(s).\n")
+                return True, ""
+            else:
+                with open("log.txt", "a") as log_file:
+                    log_file.write(f"Validation failed after {attempt_count} attempt(s). Output: {result}\n")
+                return False, result.strip()
+
+        except Exception as e:
+            with open("log.txt", "a") as log_file:
+                log_file.write(f"Agent validation crashed after {attempt_count} attempt(s): {str(e)}\n")
+            return False, f"Agent validation crashed: {str(e)}"
+
+    return validate_code

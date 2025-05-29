@@ -48,27 +48,31 @@ prompt_template = PromptTemplate(
 )
 
 def get_fix_suggestions(llm, code, feedback=""):
-    chain = LLMChain(llm=llm, prompt=prompt_template)
-    response = chain.run(
-        code=code,
-        feedback=feedback,
-        defect_types=DEFECT_TYPES
-    ).strip()
+    try:
+        chain = LLMChain(llm=llm, prompt=prompt_template)
+        response = chain.run(
+            code=code,
+            feedback=feedback,
+            defect_types=DEFECT_TYPES
+        ).strip()
 
-    suggestions = []
-    blocks = response.split("\n\n")
+        suggestions = []
+        blocks = response.split("\n\n")
 
-    for block in blocks:
-        defect, fix, reason = "", "", ""
-        lines = block.strip().splitlines()
-        for line in lines:
-            if line.startswith("Defect Type:"):
-                defect = line[len("Defect Type:"):].strip()
-            elif line.startswith("Fix:"):
-                fix = line[len("Fix:"):].strip()
-            elif line.startswith("Reason:"):
-                reason = line[len("Reason:"):].strip()
-        if defect or fix or reason:
-            suggestions.append([defect, fix, reason])
+        for block in blocks:
+            defect, fix, reason = "", "", ""
+            lines = block.strip().splitlines()
+            for line in lines:
+                if line.startswith("Defect Type:"):
+                    defect = line[len("Defect Type:"):].strip()
+                elif line.startswith("Fix:"):
+                    fix = line[len("Fix:"):].strip()
+                elif line.startswith("Reason:"):
+                    reason = line[len("Reason:"):].strip()
+            if defect or fix or reason:
+                suggestions.append([defect, fix, reason])
 
-    return suggestions
+        return suggestions
+
+    except Exception as e:
+        return [["Error", "", f"Exception during suggestion generation: {str(e)}"]]

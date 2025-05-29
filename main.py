@@ -1,4 +1,4 @@
-api_key = ""
+api_key = "AIzaSyA-epFo2vqg96Hc7RV88mJB7BOqqhEI-aw"
 
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -71,7 +71,7 @@ def run_single_file(llm, buggy_file, test_file):
 
         try:
             validate_code = validate_code_agent(llm)
-            passed, feedback = validate_code(temp_path, test_file)
+            passed, feedback = validate_code(temp_path)
         except Exception as e:
             print(f"Error validating code: {e}")
             passed, feedback = False, f"Validation error: {e}"

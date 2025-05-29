@@ -1,11 +1,5 @@
-Here is the cleaned-up version of your `README.md` without emojis, credits, or license section:
 
----
-
-### `README.md`
-
-```markdown
-# Multi-Agent Code Repair System for QuixBugs
+# Automated Code Correction System
 
 This project implements a multi-agent system using LangChain and Gemini/OpenAI LLMs to automatically repair buggy Python programs from the QuixBugs benchmark. The system iteratively generates, validates, and fixes buggy code using LLM agents.
 

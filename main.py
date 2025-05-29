@@ -1,4 +1,4 @@
-api_key = "AIzaSyA-epFo2vqg96Hc7RV88mJB7BOqqhEI-aw"
+api_key = "YOUR_API_KEY"
 
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI

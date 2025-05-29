@@ -4,7 +4,6 @@ The fixed code correctly implements Brian Kernighan's algorithm for counting set
 
   
  
-
 ================================================================================
 
 VALIDATION RESULT:

@@ -25,11 +25,12 @@ code\_db/
 log.txt                                   # Logs for validation attempts
 main.py                                   # Entry point
 agents/
-├── code\_fix\_agent.py
-├── code\_gen\_agent.py
-├── prompt\_gen\_agent.py
-├── retrieval\_agent.py
-├── validator\_agent.py
+├── code\_fix\_agent.py                   # Detects the bugs and suggests line-by-line fixes
+├── code\_gen\_agent.py                   # Generates the fixed code as suggested by fix_agent with dynamic prompting
+├── prompt\_gen\_agent.py                 # Dynamic Prompt Generator based on Output by Validator
+├── retrieval\_agent.py                   # Retrieves JSON map to check for suggested fixes of all 14 defects
+├── validator\_agent.py                   # Uses Subprocess to Execute Python Files and test.
+├── defect\_map.py                        # Acts as a Database for storing defects, fixes, and examples.
 
 ````
 

@@ -41,8 +41,8 @@ agents/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Celestial317/multi-agent-code-repair.git
-cd multi-agent-code-repair
+git clone https://github.com/Celestial317/automated-code-correction
+cd automated-code-correction
 ````
 
 ### 2. Install dependencies

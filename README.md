@@ -22,7 +22,7 @@ code\_db/
 ├── temp\_code/                           # Intermediate outputs during iterations
 ├── testing\_code/                        # Corresponding test files
     ├── correct\python\_programs/         # For validation and Testing
-log.txt                                  # Logs for validation attempts
+log.txt                                   # Logs for validation attempts
 main.py                                   # Entry point
 agents/
 ├── code\_fix\_agent.py
@@ -79,7 +79,7 @@ Run the system:
 python main.py
 ```
 
-The system will iterate through all files in `buggy_code/`, attempt to fix them, and write the results to `fixed_code/` if the tests pass.
+The system will iterate through all files in `buggy_code/`, attempt to fix them, create a buffer of files at `temp_code/` till it validates the output, and write the final results to `fixed_code/` if all tests by `validator_agent.py` are passed.
 
 ## Output and Logs
 

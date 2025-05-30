@@ -1,0 +1,616 @@
+PS C:\CodeVSCSummers\code_gen_check> cd code_db
+PS C:\CodeVSCSummers\code_gen_check\code_db> python similarity.py
+Found 40 matching files in all directories. Comparing...
+
+Comparing bitcount.py ...
+Buggy vs Fixed response:
+Similarity Score: 98.50/100
+Explanation: The snippets are nearly identical. The only difference is `^=` vs `&=`, both achieving the same bit-clearing functionality in this context.
+
+Extracted Similarity Score (Buggy vs Fixed): 98.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, including the algorithm, docstrings, and overall structure, thus maximal similarity.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing breadth_first_search.py ...
+Buggy vs Fixed response:
+Similarity Score: 95.00/100
+Explanation: The code snippets implement the same BFS algorithm with minor structural differences in successor node handling.
+
+Extracted Similarity Score (Buggy vs Fixed): 95.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, exhibiting complete algorithmic, functional, and structural equivalence.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing bucketsort.py ...
+Buggy vs Fixed response:
+Similarity Score: 95.00/100
+Explanation: The snippets implement the same bucket sort algorithm with a minor difference in the enumeration list.
+
+Extracted Similarity Score (Buggy vs Fixed): 95.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical; they implement the exact same bucket sort algorithm with identical structure and functionality.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing depth_first_search.py ...
+Buggy vs Fixed response:
+Similarity Score: 95.00/100
+Explanation: The snippets are nearly identical, differing only by one line: `nodesvisited.add(node)`. This accounts for the minor difference.
+
+Extracted Similarity Score (Buggy vs Fixed): 95.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The two code snippets are exactly identical, leading to a perfect similarity score.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing detect_cycle.py ...
+Buggy vs Fixed response:
+Similarity Score: 92.50/100
+Explanation: Both snippets implement the same Tortoise and Hare algorithm for cycle detection, with minor differences in initial conditions and null checks.
+
+Extracted Similarity Score (Buggy vs Fixed): 92.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the same algorithm (tortoise and hare) for cycle detection.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing find_first_in_sorted.py ...
+Buggy vs Fixed response:
+Similarity Score: 95.00/100
+Explanation: Both snippets implement binary search to find the first occurrence; they are functionally equivalent with minor structural differences.
+
+Extracted Similarity Score (Buggy vs Fixed): 95.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The two code snippets are identical in their algorithmic approach, logic, structure, and functionality, thus they are perfectly similar.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing find_in_sorted.py ...
+Buggy vs Fixed response:
+Similarity Score: 95.00/100
+Explanation: The snippets implement binary search with a very slight difference in the recursive call within `binsearch`.
+
+Extracted Similarity Score (Buggy vs Fixed): 95.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the same binary search algorithm with the same logic and structure.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing flatten.py ...
+Buggy vs Fixed response:
+Similarity Score: 98.00/100
+Explanation: The snippets are nearly identical, differing only in a single line's yield statement, making them functionally almost equivalent.
+
+Extracted Similarity Score (Buggy vs Fixed): 98.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, exhibiting complete algorithmic, functional, and structural equivalence.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing gcd.py ...
+Buggy vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The snippets are functionally identical implementations of the Euclidean algorithm for calculating the GCD. Only argument order differs in the recursive call.
+
+Extracted Similarity Score (Buggy vs Fixed): 100.00/100
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 7
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing get_factors.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 5
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, including logic, structure, and comments, resulting in maximal similarity.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing hanoi.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 58
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing is_valid_parenthesization.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 55
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 53
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing kheapsort.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 52
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 50
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing knapsack.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 47
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the same knapsack algorithm with the same bug fix.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing kth.py ...
+Buggy vs Fixed response:
+Similarity Score: 98.50/100
+Explanation: Both snippets implement Quickselect to find the kth smallest element. The only difference is the pivot selection (first vs random).
+
+Extracted Similarity Score (Buggy vs Fixed): 98.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, exhibiting perfect algorithmic, functional, and structural similarity.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing lcs_length.py ...
+Buggy vs Fixed response:
+Similarity Score: 55.00/100
+Explanation: Snippet 2 is dynamic programming, computing a longest common *substring*, while Snippet 1 seems to be computing a related value and has a different implementation.
+
+Extracted Similarity Score (Buggy vs Fixed): 55.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the same dynamic programming algorithm for finding the longest common substring.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing levenshtein.py ...
+Buggy vs Fixed response:
+Similarity Score: 95.00/100
+Explanation: The snippets are very similar; only a single character `1 +` is removed, impacting the calculation.
+
+Extracted Similarity Score (Buggy vs Fixed): 95.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the same recursive Levenshtein distance algorithm and docstrings.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing lis.py ...
+Buggy vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical. They both implement the same algorithm for finding the length of the longest increasing subsequence.
+
+Extracted Similarity Score (Buggy vs Fixed): 100.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The two code snippets are identical in both structure and functionality, computing the Longest Increasing Subsequence.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing longest_common_subsequence.py ...
+Buggy vs Fixed response:
+Similarity Score: 97.50/100
+Explanation: The codes implement the same LCS algorithm recursively, differing only in a minor detail in the matching case.
+
+Extracted Similarity Score (Buggy vs Fixed): 97.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the same recursive logic for finding the longest common subsequence.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing max_sublist_sum.py ...
+Buggy vs Fixed response:
+Similarity Score: 95.00/100
+Explanation: Both snippets implement Kadane's algorithm for finding the maximum sublist sum. Snippet 2 resets `max_ending_here` to zero if it becomes negative. This is important for correctness, while snippet 1 misses this part which impacts functionality in some cases.
+
+Extracted Similarity Score (Buggy vs Fixed): 95.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the same Kadane's algorithm for the maximum subarray sum problem.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing mergesort.py ...
+Buggy vs Fixed response:
+Similarity Score: 99.50/100
+Explanation: The snippets implement nearly identical merge sort algorithms with a minor base case difference.
+
+Extracted Similarity Score (Buggy vs Fixed): 99.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical. They implement the same merge sort algorithm with identical base cases.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing minimum_spanning_tree.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 3
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 1
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing next_palindrome.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 59
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 57
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing next_permutation.py ...
+Buggy vs Fixed response:
+**Analysis:**
+
+Both code snippets aim to find the next lexicographical permutation of a given list. They iterate from right to left, finding the first element `perm[i]` that is smaller than its right neighbor. Then, they find the smallest element `perm[j]` to the right of `i` that is *greater* than `perm[i]` (this is a key difference - snippet 1 incorrectly searches for a *smaller* element). They swap `perm[i]` and `perm[j]`, and reverse the sublist from `i+1` to the end. Snippet 2 correctly implements the algorithm for finding the next permutation, while Snippet 1 has a bug in the inner loop's conditional.
+
+**Similarity Score:** 90.00
+
+**Explanation:** High similarity due to identical structure/logic except for a single, critical bug in the comparison operation within the inner loop.
+
+[Warning] Could not extract similarity score from Buggy vs Fixed response.
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 51
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing pascal.py ...
+Buggy vs Fixed response:
+Similarity Score: 98.00/100
+Explanation: The snippets are nearly identical, differing only by `r+1` in the inner loop's range, resulting in minor functional variation.
+
+Extracted Similarity Score (Buggy vs Fixed): 98.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical; they implement the exact same Pascal's triangle generation algorithm.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing possible_change.py ...
+Buggy vs Fixed response:
+Similarity Score: 98.77/100
+Explanation: The snippets are nearly identical, differing only by a single base case check (`if not coins: return 0`).
+
+Extracted Similarity Score (Buggy vs Fixed): 98.77/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The two code snippets are exactly identical, thus exhibiting complete functional, structural, and algorithmic similarity.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing powerset.py ...
+Buggy vs Fixed response:
+Similarity Score: 95.00/100
+Explanation: The algorithms are nearly identical, differing only in the order subsets are combined in the return statement.
+
+Extracted Similarity Score (Buggy vs Fixed): 95.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The two code snippets are identical, demonstrating perfect algorithmic, functional, and structural similarity.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing quicksort.py ...
+Buggy vs Fixed response:
+Similarity Score: 85.00/100
+Explanation: Both implementations use the quicksort algorithm with recursion and differ only in pivot handling and list slicing.
+
+Extracted Similarity Score (Buggy vs Fixed): 85.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, exhibiting complete algorithmic, functional, and structural equivalence.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing reverse_linked_list.py ...
+Buggy vs Fixed response:
+Similarity Score: 97.50/100
+Explanation: Both snippets implement the same linked list reversal algorithm with identical logic and structure; only minor variable update difference exists.
+
+Extracted Similarity Score (Buggy vs Fixed): 97.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the exact same linked list reversal algorithm with identical structure and logic.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing rpn_eval.py ...
+Buggy vs Fixed response:
+Similarity Score: 98.00/100
+Explanation: Both snippets implement RPN evaluation with identical logic except for operand order in the `op` function call.
+
+Extracted Similarity Score (Buggy vs Fixed): 98.00/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, exhibiting complete algorithmic, functional, and structural equivalence, hence 100% similarity.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing shortest_path_length.py ...
+Buggy vs Fixed response:
+Similarity Score: 88.50/100
+Explanation: Both snippets implement Dijkstra's algorithm. Snippet 2 is a more efficient and standard implementation using a distance dictionary.
+
+Extracted Similarity Score (Buggy vs Fixed): 88.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing Dijkstra's algorithm in the same way with the same comments.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing shortest_path_lengths.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 9
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the same Floyd-Warshall algorithm with the same structure and logic.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing shortest_paths.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 4
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical; they implement the same Bellman-Ford algorithm logic with identical structure and functionality.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing shunting_yard.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 59
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 57
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing sieve.py ...
+Buggy vs Fixed response:
+Similarity Score: 45.00/100
+Explanation: Both calculate primes, but snippet 2 uses the efficient Sieve of Eratosthenes algorithm while snippet 1's implementation is highly inefficient.
+
+Extracted Similarity Score (Buggy vs Fixed): 45.00/100
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 52
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing sqrt.py ...
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 49
+}
+]
+[Warning] Gemini API failure on Buggy vs Fixed comparison.
+[Error] Gemini API call failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 47
+}
+]
+[Warning] Gemini API failure on Correct vs Fixed comparison.
+
+Comparing subsequences.py ...
+Buggy vs Fixed response:
+Similarity Score: 98.50/100
+Explanation: The code snippets are almost identical, with only a minor difference in the base case return value, resulting in near functional equivalence.
+
+Extracted Similarity Score (Buggy vs Fixed): 98.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, exhibiting complete algorithmic, functional, and structural equivalence.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing to_base.py ...
+Buggy vs Fixed response:
+Similarity Score: 98.50/100
+Explanation: The snippets are nearly identical, differing only in the order the converted digits are added to the result string.
+
+Extracted Similarity Score (Buggy vs Fixed): 98.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The two snippets are identical, therefore have maximum algorithmic, functional, and structural similarity.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing topological_ordering.py ...
+Buggy vs Fixed response:
+Similarity Score: 72.50/100
+Explanation: Both snippets aim for topological sort, but snippet 2 uses a more robust, standard Kahn's algorithm approach.
+
+Extracted Similarity Score (Buggy vs Fixed): 72.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical, implementing the same topological sorting algorithm with equivalent structure and functionality.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+Comparing wrap.py ...
+Buggy vs Fixed response:
+Similarity Score: 97.50/100
+Explanation: The snippets are almost identical; the second one includes a crucial final step to include remaining text.
+
+Extracted Similarity Score (Buggy vs Fixed): 97.50/100
+Correct vs Fixed response:
+Similarity Score: 100.00/100
+Explanation: The code snippets are identical; therefore, they exhibit complete functional, structural, and algorithmic equivalence.
+
+Extracted Similarity Score (Correct vs Fixed): 100.00/100
+
+=== Average Similarity with Buggy Code: 92.05/100 ===
+=== Average Similarity with Corrected Code: 100.00/100 ===

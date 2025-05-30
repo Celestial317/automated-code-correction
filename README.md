@@ -22,8 +22,10 @@ code\_db/
 ├── temp\_code/                           # Intermediate outputs during iterations
 ├── testing\_code/                        # Corresponding test files
     ├── correct\python\_programs/         # For validation and Testing
+
 log.txt                                   # Logs for validation attempts
 main.py                                   # Entry point
+
 agents/
 ├── code\_fix\_agent.py                   # Detects the bugs and suggests line-by-line fixes
 ├── code\_gen\_agent.py                   # Generates the fixed code as suggested by fix_agent with dynamic prompting

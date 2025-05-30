@@ -1,7 +1,7 @@
 
 # Automated Code Correction System
 
-This project implements a multi-agent system using LangChain and Gemini/OpenAI LLMs to automatically repair buggy Python programs from the QuixBugs benchmark. The system iteratively generates, validates, and fixes buggy code using LLM agents.
+This project implements a multi-agent system using LangChain and Gemini LLMs to repair buggy Python programs from the QuixBugs benchmark automatically. The system iteratively generates, validates, and fixes buggy code using LLM agents.
 
 ## Features
 

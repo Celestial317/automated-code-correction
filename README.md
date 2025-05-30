@@ -91,6 +91,7 @@ The system will iterate through all files in `buggy_code/`, attempt to fix them,
 cd code_db
 python tester.py
 ```
+Some files will be skipped in this (Graph Based); they need to be run manually.
 
 
 ## Output and Logs

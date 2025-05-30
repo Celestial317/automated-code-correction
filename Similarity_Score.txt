@@ -1,3 +1,8 @@
+TLDR:
+=== Average Similarity with Buggy Code: 92.05/100 ===
+=== Average Similarity with Corrected Code: 100.00/100 ===
+
+
 PS C:\CodeVSCSummers\code_gen_check> cd code_db
 PS C:\CodeVSCSummers\code_gen_check\code_db> python similarity.py
 Found 40 matching files in all directories. Comparing...

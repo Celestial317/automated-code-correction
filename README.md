@@ -62,7 +62,7 @@ subprocess
 
 ### 3. Prepare dataset
 
-Add buggy code to `code_db/buggy_code/` and test files to `code_db/testing_code/`.
+Add buggy code to `code_db/buggy_code/` and test files to `code_db/correct_python_programs`.
 
 Example:
 
@@ -84,6 +84,14 @@ python main.py
 ```
 
 The system will iterate through all files in `buggy_code/`, attempt to fix them, create a buffer of files at `temp_code/` till it validates the output, and write the final results to `fixed_code/` if all tests by `validator_agent.py` are passed.
+
+## Testing the Codes
+
+```bash
+cd code_db
+python tester.py
+```
+
 
 ## Output and Logs
 

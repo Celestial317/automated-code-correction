@@ -20,8 +20,9 @@ code\_db/
 ├── buggy\_code/                          # Input buggy Python files
 ├── fixed\_code/                          # Final fixed files after validation
 ├── temp\_code/                           # Intermediate outputs during iterations
-├── testing\_code/                        # Corresponding test files
-    ├── correct\python\_programs/         # For validation and Testing
+├── correct\_python\_programs/            # For validation and Testing
+├── json\_testcases/                      # Testcases to judge the accuracy
+├── tester.py                             # Run this to compare Correct and Fixed Codes over Testcases
 
 log.txt                                   # Logs for validation attempts
 main.py                                   # Entry point

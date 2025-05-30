@@ -11,6 +11,7 @@ This project implements a multi-agent system using LangChain and Gemini LLMs to 
 - Prompt engineering with context and prior examples
 - Test-based validation agent using subprocess execution
 - Iterative code repair loop with log tracking
+- Provides a similarity score of 100% with corrected code and 92.05% with Buggy code (haha ofc it will be lesser due to changes), yet this shows how efficient it is
 
 ## Directory Structure
 
